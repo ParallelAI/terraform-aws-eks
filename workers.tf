@@ -105,7 +105,7 @@ resource "aws_security_group_rule" "workers_ingress_cluster_https" {
 }
 
 resource "aws_iam_role" "workers" {
-  name_prefix           = "${aws_eks_cluster.this.name}"
+  name_prefix           = "${aws_eks_cluster.this.name}-WorkerRole"
   assume_role_policy    = "${data.aws_iam_policy_document.workers_assume_role_policy.json}"
   force_detach_policies = true
 }
@@ -147,7 +147,7 @@ resource "aws_iam_role_policy_attachment" "workers_autoscaling" {
 }
 
 resource "aws_iam_policy" "worker_autoscaling" {
-  name_prefix = "eks-worker-autoscaling-${aws_eks_cluster.this.name}"
+  name_prefix = "${aws_eks_cluster.this.name}-worker-autoscaling"
   description = "EKS worker node autoscaling policy for cluster ${aws_eks_cluster.this.name}"
   policy      = "${data.aws_iam_policy_document.worker_autoscaling.json}"
 }
