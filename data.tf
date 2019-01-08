@@ -87,6 +87,6 @@ data "template_file" "storage-class" {
   template = "${file("${path.module}/templates/storage-class.yaml.tpl")}"
 
   vars {
-    azs = "${var.azs}"
+    azs = "${join(",", var.azs)}"
   }
 }
