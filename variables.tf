@@ -32,6 +32,15 @@ variable "manage_storage_class" {
   default     = true
 }
 
+variable "azs" {
+  description = "A list of availability zones in the region"
+  default     = [
+    "us-east-1a",
+    "us-east-1b",
+    "us-east-1c",
+  ]
+}
+
 variable "map_accounts" {
   description = "Additional AWS account numbers to add to the aws-auth configmap. See examples/eks_test_fixture/variables.tf for example format."
   type        = "list"
