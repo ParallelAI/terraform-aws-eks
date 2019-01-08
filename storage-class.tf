@@ -4,7 +4,7 @@ resource "local_file" "storage-class" {
   count    = "${var.manage_storage_class ? 1 : 0}"
 }
 
-resource "null_resource" "update_config_map_aws_auth" {
+resource "null_resource" "create_storage_class" {
   depends_on = ["aws_eks_cluster.this"]
 
   provisioner "local-exec" {
