@@ -82,3 +82,11 @@ data "template_file" "userdata" {
     kubelet_extra_args  = "${lookup(var.worker_groups[count.index], "kubelet_extra_args", local.workers_group_defaults["kubelet_extra_args"])}"
   }
 }
+
+data "template_file" "storage-class" {
+  template = "${file("${path.module}/templates/storage-class.yaml.tpl")}"
+
+  vars {
+    azs = "${var.azs}"
+  }
+}

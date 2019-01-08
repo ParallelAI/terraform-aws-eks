@@ -27,6 +27,11 @@ variable "manage_aws_auth" {
   default     = true
 }
 
+variable "manage_storage_class" {
+  description = "Whether to create default storage class in cluster."
+  default     = true
+}
+
 variable "map_accounts" {
   description = "Additional AWS account numbers to add to the aws-auth configmap. See examples/eks_test_fixture/variables.tf for example format."
   type        = "list"
